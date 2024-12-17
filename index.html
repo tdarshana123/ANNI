@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anniversary Greeting Card</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      color: #333;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 500px;
+      z-index: 10;
+      padding-top: 5px;
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #ff6f61;
+    }
+    p {
+      font-size: 1.2rem;
+      margin: 10px 0;
+      font-family: 'Roboto', sans-serif;
+    }
+    .countdown {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #ff6f61;
+    }
+    img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* Envelope Design */
+    .envelope {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 310px;
+      background-color: #fff;
+      border: 3px solid #ff6f61;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      z-index: 20;
+    }
+    .envelope h2 {
+      color: #ff6f61;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+    }
+    .envelope p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .envelope button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+    }
+    .envelope button:hover {
+      background-color: #ff4e42;
+    }
+
+    /* Animated Hearts */
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .heart {
+      position: absolute;
+      bottom: -10%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(-45deg);
+      animation: float 5s infinite ease-in;
+    }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: 10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(-45deg);
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-150vh) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+
+    /* Random Heart Positioning */
+    .heart:nth-child(1) {
+      left: 20%;
+      animation-duration: 4s;
+      animation-delay: 0s;
+    }
+    .heart:nth-child(2) {
+      left: 40%;
+      animation-duration: 6s;
+      animation-delay: 1s;
+    }
+    .heart:nth-child(3) {
+      left: 60%;
+      animation-duration: 4.5s;
+      animation-delay: 1.5s;
+    }
+    .heart:nth-child(4) {
+      left: 80%;
+      animation-duration: 5.5s;
+      animation-delay: 2s;
+    }
+    .heart:nth-child(5) {
+      left: 30%;
+      animation-duration: 7s;
+      animation-delay: 1s;
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="./audios/romantic-keys-153559.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Animated Hearts -->
+  <div class="hearts">
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+  </div>
+
+  <!-- Card Content -->
+  <div class="card">
+    <h1>Happy 1st Anniversary, My Love!</h1>
+    <p>Dear Sudu Manika,</p>
+    <p>Our first year together has been filled with love, laughter, and unforgettable moments. Every day with you feels like a dream come true, and I am so thankful to share my life with you.</p>
+    <div class="countdown" id="countdown">00:00:00</div>
+    <img src="https://images.pexels.com/photos/1045541/pexels-photo-1045541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Anniversary Image">
+    <p>With all my love and heart,</p>
+    <p><strong>Chubii💖</strong></p>
+  </div>
+
+  <!-- Envelope with custom message -->
+  <div class="envelope" id="envelope">
+    <h2>Our Anniversary! 💌</h2>
+    <p>Wishing you a lifetime of love and happiness. Our journey together has been more beautiful than I could have ever imagined, and I look forward to many more years of laughter and love with you.</p>
+    <button onclick="toggleEnvelope()">Close</button>
+  </div>
+
+  <!-- Countdown Timer Script -->
+  <script>
+    const targetDate = new Date("2024-12-18T00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML = 
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "It's Our Anniversary!";
+        document.getElementById("envelope").style.display = "block"; // Show the envelope
+      }
+    }
+
+    function toggleEnvelope() {
+      const envelope = document.getElementById("envelope");
+      envelope.style.display = envelope.style.display === "block" ? "none" : "block";
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
